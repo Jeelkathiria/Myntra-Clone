@@ -5,17 +5,24 @@ import App from "./routes/App.jsx";
 import Bag from "./routes/Bag.jsx";
 import Home from "./routes/Home.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import myntraStore from "./store/index.js";
 
-const router = createBrowserRouter([{
-  path: "/",
-  element: <App />,
-  children: [{ path: "/bag", element: <Bag /> },
-    { path: "/", element: <Home /> }
-  ]
-}]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { path: "/bag", element: <Bag /> },
+      { path: "/", element: <Home /> },
+    ],
+  },
+]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <Provider store={myntraStore}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 );

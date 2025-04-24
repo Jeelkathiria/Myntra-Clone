@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <main>
         <div className="items-container">
-          <HomeItem item={item[0]} />
+          <HomeItem key={item} item={item[0]} />
         </div>
       </main>
     </>

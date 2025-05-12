@@ -4,14 +4,19 @@ import { useSelector } from "react-redux";
 
 
 const Home = () => {
-  const item = useSelector(store => store.items)
-  console.log(item)
+  const items = useSelector(store => store.items)
 
   return (
     <>
       <main>
         <div className="items-container">
-          <HomeItem key={item} item={item[0]} />
+          {items.map((item)=>{
+            return (
+              <div className="item" key={item.id}>
+                <HomeItem item={item} />
+              </div>
+            )
+          })}
         </div>
       </main>
     </>
